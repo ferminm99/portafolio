@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  experimental: {
+    appDir: true, // 👈 ¡IMPORTANTE!
+  },
+};
 
-export default nextConfig
+export default nextConfig;
