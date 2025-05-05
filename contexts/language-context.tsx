@@ -1,19 +1,27 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 
-type Language = "en" | "es"
+type Language = "en" | "es";
 
 interface LanguageContextType {
-  language: Language
-  setLanguage: (language: Language) => void
-  t: (key: string) => string
+  language: Language;
+  setLanguage: (language: Language) => void;
+  t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 interface LanguageProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const translations = {
@@ -98,7 +106,7 @@ export const translations = {
   },
   "education.degree1": {
     en: "B.S in Computer Science",
-    es: "Licenciatura en Ciencias de la Computación",
+    es: "Licenciatura en Informática",
   },
   "education.degree2": {
     en: "University Analyst Programmer",
@@ -111,10 +119,6 @@ export const translations = {
   "education.location": {
     en: "La Plata, Argentina",
     es: "La Plata, Argentina",
-  },
-  "education.gpa": {
-    en: "GPA",
-    es: "Promedio",
   },
 
   // Experience Section
@@ -143,8 +147,8 @@ export const translations = {
     es: 'Colaboré en el desarrollo de un sistema integral de gestión empresarial para "Impacto", que incluye facturación, inventario y optimización del flujo de trabajo, gestionando operaciones para más de 1,000 clientes.',
   },
   "experience.job1.achievement2": {
-    en: 'Developed the official website for "El Mensual", showcasing 40 unique products, improving user experience, and increasing product visibility by 30%.',
-    es: 'Desarrollé el sitio web oficial de "El Mensual", mostrando 40 productos únicos, mejorando la experiencia del usuario y aumentando la visibilidad del producto en un 30%.',
+    en: 'Developed the official website for "El Mensual", showcasing +40 unique products, improving user experience, and increasing product visibility by 30%.',
+    es: 'Desarrollé el sitio web oficial de "El Mensual", mostrando +40 productos únicos, mejorando la experiencia del usuario y aumentando la visibilidad del producto en un 30%.',
   },
   "experience.job1.achievement3": {
     en: "Automated transaction management for financial tracking, saving clients over 100 hours monthly and ensuring precise reconciliation of bank balances, taxes, and credits.",
@@ -167,16 +171,16 @@ export const translations = {
     es: "Facultad de Informática en la Universidad Nacional de La Plata",
   },
   "experience.job2.achievement1": {
-    en: "Constructed a flood alert app for La Plata, simulating 10 real-time emergency scenarios and improving system response times.",
-    es: "Construí una aplicación de alerta de inundaciones para La Plata, simulando 10 escenarios de emergencia en tiempo real y mejorando los tiempos de respuesta del sistema.",
+    en: "Constructed a flood alert app for La Plata, simulating +10 real-time emergency scenarios and improving system response times.",
+    es: "Construí una aplicación de alerta de inundaciones para La Plata, simulando +10 escenarios de emergencia en tiempo real y mejorando los tiempos de respuesta del sistema.",
   },
   "experience.job2.achievement2": {
-    en: "Built a platform to schedule and manage 20 simulated sports events, enhancing skills in data structures and responsive UI design.",
-    es: "Construí una plataforma para programar y gestionar 20 eventos deportivos simulados, mejorando las habilidades en estructuras de datos y diseño de UI responsivo.",
+    en: "Built a platform to schedule and manage +20 simulated sports events, enhancing skills in data structures and responsive UI design.",
+    es: "Construí una plataforma para programar y gestionar +20 eventos deportivos simulados, mejorando las habilidades en estructuras de datos y diseño de UI responsivo.",
   },
   "experience.job2.achievement3": {
-    en: 'Created "La Justa" app to manage the sale and inventory of vegetable bags for an agricultural company, handling 15 inventory items and transactions.',
-    es: 'Creé la aplicación "La Justa" para gestionar la venta e inventario de bolsas de verduras para una empresa agrícola, manejando 15 artículos de inventario y transacciones.',
+    en: 'Created "La Justa" app to manage the sale and inventory of vegetable bags for an agricultural company, handling +15 inventory items and transactions.',
+    es: 'Creé la aplicación "La Justa" para gestionar la venta e inventario de bolsas de verduras para una empresa agrícola, manejando +15 artículos de inventario y transacciones.',
   },
 
   // Projects Section
@@ -197,8 +201,8 @@ export const translations = {
     es: "Anotaciones Bancarias",
   },
   "projects.project1.description": {
-    en: "A demo for El Mensual featuring banking annotations and financial data visualization.",
-    es: "Una demo para El Mensual con anotaciones bancarias y visualización de datos financieros.",
+    en: "A demo for a manager banking annotations and financial data visualization.",
+    es: "Una demo para manejo de anotaciones bancarias y visualización de datos financieros.",
   },
   "projects.project2.title": {
     en: "El Mensual",
@@ -320,73 +324,81 @@ export const translations = {
     en: "Switch language",
     es: "Cambiar idioma",
   },
-}
+};
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>("en")
-  const [isInitialized, setIsInitialized] = useState(false)
+  const [language, setLanguageState] = useState<Language>("en");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Detect browser language on first render
   useEffect(() => {
     const detectBrowserLanguage = () => {
       try {
         // Try to get saved language first
-        const savedLanguage = localStorage.getItem("language") as Language
-        if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
-          return savedLanguage
+        const savedLanguage = localStorage.getItem("language") as Language;
+        if (
+          savedLanguage &&
+          (savedLanguage === "en" || savedLanguage === "es")
+        ) {
+          return savedLanguage;
         }
 
         // Otherwise detect from browser
-        const browserLang = navigator.language || (navigator as any).userLanguage
+        const browserLang =
+          navigator.language || (navigator as any).userLanguage;
         if (browserLang) {
           // Check if the browser language starts with 'es'
           if (browserLang.toLowerCase().startsWith("es")) {
-            return "es"
+            return "es";
           }
         }
 
         // Default to English
-        return "en"
+        return "en";
       } catch (error) {
         // If there's any error (e.g., localStorage not available), default to English
-        return "en"
+        return "en";
       }
-    }
+    };
 
     if (!isInitialized) {
-      const detectedLanguage = detectBrowserLanguage()
-      setLanguageState(detectedLanguage)
-      setIsInitialized(true)
+      const detectedLanguage = detectBrowserLanguage();
+      setLanguageState(detectedLanguage);
+      setIsInitialized(true);
     }
-  }, [isInitialized])
+  }, [isInitialized]);
 
   const setLanguage = (newLanguage: Language) => {
-    setLanguageState(newLanguage)
+    setLanguageState(newLanguage);
     try {
-      localStorage.setItem("language", newLanguage)
+      localStorage.setItem("language", newLanguage);
     } catch (error) {
       // Handle localStorage errors silently
-      console.error("Could not save language preference:", error)
+      console.error("Could not save language preference:", error);
     }
-  }
+  };
 
   const t = (key: string): string => {
-    return translations[key as keyof typeof translations]?.[language] || key
-  }
+    return translations[key as keyof typeof translations]?.[language] || key;
+  };
 
   const value = {
     language,
     setLanguage,
     t,
-  }
+  };
 
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+  return (
+    <LanguageContext.Provider value={value}>
+      {children}
+    </LanguageContext.Provider>
+  );
 }
 
 export const useLanguage = () => {
-  const context = useContext(LanguageContext)
+  const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error("useLanguage must be used within a LanguageProvider")
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
-  return context
-}
+  return context;
+};

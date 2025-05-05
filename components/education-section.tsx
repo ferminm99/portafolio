@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-import { useLanguage } from "@/contexts/language-context"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/language-context";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export function EducationSection() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   const education = [
     {
@@ -12,16 +18,14 @@ export function EducationSection() {
       institution: t("education.institution"),
       period: "2018 - 2024",
       location: t("education.location"),
-      gpa: "2.84/4.0",
     },
     {
       degree: t("education.degree2"),
       institution: t("education.institution"),
       period: "2020 - 2024",
       location: t("education.location"),
-      gpa: "2.73/4.0",
     },
-  ]
+  ];
 
   return (
     <section
@@ -44,7 +48,9 @@ export function EducationSection() {
           {education.map((item, index) => (
             <Card key={index} className="border-teal-100 dark:border-teal-900">
               <CardHeader>
-                <CardTitle className="text-teal-700 dark:text-teal-300">{item.degree}</CardTitle>
+                <CardTitle className="text-teal-700 dark:text-teal-300">
+                  {item.degree}
+                </CardTitle>
                 <CardDescription className="text-base font-medium text-gray-600 dark:text-gray-400">
                   {item.institution}
                 </CardDescription>
@@ -52,8 +58,12 @@ export function EducationSection() {
               <CardContent>
                 <div className="flex flex-col space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{item.period}</span>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{item.location}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {item.period}
+                    </span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {item.location}
+                    </span>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -67,5 +77,5 @@ export function EducationSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
