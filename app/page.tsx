@@ -53,7 +53,7 @@ export default function Home() {
       id: "impacto-management",
       title: t("projects.project4.title"),
       description: t("projects.project4.description"),
-      image: "/project-impacto.jpg", // Local image
+      image: "/project-locales.jpg", // Local image
       link: "#",
       tags: ["Full Stack", "Business Solutions", "Database"],
     },
