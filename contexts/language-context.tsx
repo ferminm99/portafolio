@@ -283,16 +283,16 @@ export const translations = {
     es: "Planificación Estratégica",
   },
   "skills.strength2.description": {
-    en: 'Led digital strategies, including marketing campaigns that increased sales and boosted brand visibility 15x for "El Mensual."',
-    es: 'Dirigí estrategias digitales, incluidas campañas de marketing que aumentaron las ventas y potenciaron la visibilidad de la marca 15 veces para "El Mensual".',
+    en: 'Led digital strategies, including marketing campaigns that increased sales and boosted brand visibility for "El Mensual."',
+    es: 'Dirigí estrategias digitales, incluidas campañas de marketing que aumentaron las ventas y potenciaron la visibilidad de la marca para "El Mensual".',
   },
   "skills.strength3.title": {
     en: "Problem Solving",
     es: "Resolución de Problemas",
   },
   "skills.strength3.description": {
-    en: "Identified and resolved complex technical issues, reducing projects downtime by 15%.",
-    es: "Identifiqué y resolví problemas técnicos complejos, reduciendo el tiempo de inactividad en distintos proyectos en un 15%.",
+    en: "Proactively diagnosed and resolved fullstack issues across frontend and backend systems, significantly improving system stability and development flow",
+    es: "Diagnostiqué y resolví proactivamente problemas fullstack en sistemas frontend y backend, mejorando notablemente la estabilidad del sistema y el flujo de desarrollo",
   },
 
   // Contact Section
