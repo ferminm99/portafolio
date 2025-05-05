@@ -1,19 +1,24 @@
+"use client"
+
+import { useLanguage } from "@/contexts/language-context"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function EducationSection() {
+  const { t } = useLanguage()
+
   const education = [
     {
-      degree: "B.S in Computer Science",
-      institution: "Universidad Nacional de La Plata",
+      degree: t("education.degree1"),
+      institution: t("education.institution"),
       period: "2018 - 2024",
-      location: "La Plata, Argentina",
+      location: t("education.location"),
       gpa: "2.84/4.0",
     },
     {
-      degree: "University Analyst Programmer",
-      institution: "Universidad Nacional de La Plata",
+      degree: t("education.degree2"),
+      institution: t("education.institution"),
       period: "2020 - 2024",
-      location: "La Plata, Argentina",
+      location: t("education.location"),
       gpa: "2.73/4.0",
     },
   ]
@@ -27,10 +32,10 @@ export function EducationSection() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
-              Education
+              {t("education.title")}
             </h2>
             <p className="max-w-[900px] text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-300">
-              Academic background and qualifications.
+              {t("education.subtitle")}
             </p>
           </div>
         </div>
@@ -51,7 +56,9 @@ export function EducationSection() {
                     <span className="text-sm text-gray-600 dark:text-gray-400">{item.location}</span>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">GPA: {item.gpa}</span>
+                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      {t("education.gpa")}: {item.gpa}
+                    </span>
                   </div>
                 </div>
               </CardContent>

@@ -1,5 +1,8 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowRight, Github, Linkedin, Mail, Instagram } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail, Instagram, ExternalLink } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
 
 import { Button } from "@/components/ui/button"
 import { ProjectCard } from "@/components/project-card"
@@ -8,39 +11,42 @@ import { SiteFooter } from "@/components/site-footer"
 import { SkillsSection } from "@/components/skills-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { EducationSection } from "@/components/education-section"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 export default function Home() {
+  const { t } = useLanguage()
+
   const projects = [
     {
       id: "anotaciones-bancarias",
-      title: "Anotaciones Bancarias",
-      description: "A demo for El Mensual featuring banking annotations and financial data visualization.",
-      image: "/placeholder.svg?height=400&width=600",
+      title: t("projects.project1.title"),
+      description: t("projects.project1.description"),
+      image: "/project-anotaciones.jpg", // Local image
       link: "https://anotaciones-bancarias-elmensual-demo.vercel.app/",
       tags: ["Next.js", "Financial", "Data Visualization"],
     },
     {
       id: "el-mensual",
-      title: "El Mensual",
-      description: "Official website for El Mensual, showcasing 40+ unique products with improved user experience.",
-      image: "/placeholder.svg?height=400&width=600",
+      title: t("projects.project2.title"),
+      description: t("projects.project2.description"),
+      image: "/project-elmensual.jpg", // Local image
       link: "https://elmensual.com.ar",
       tags: ["Web Development", "E-commerce", "UI/UX"],
     },
     {
       id: "fitness-health-app",
-      title: "Fitness & Health App",
-      description: "Mobile application to help users track their fitness routines and health goals.",
-      image: "/placeholder.svg?height=400&width=600",
+      title: t("projects.project3.title"),
+      description: t("projects.project3.description"),
+      image: "/project-fitness.jpg", // Local image
       link: "https://github.com/ferminm99/FitnessAndHealthApp",
       tags: ["Android", "Kotlin", "Mobile Development"],
     },
     {
       id: "impacto-management",
-      title: "Impacto Business Management",
-      description:
-        "Comprehensive business management system including invoicing, inventory, and workflow optimization.",
-      image: "/placeholder.svg?height=400&width=600",
+      title: t("projects.project4.title"),
+      description: t("projects.project4.description"),
+      image: "/project-impacto.jpg", // Local image
       link: "#",
       tags: ["Full Stack", "Business Solutions", "Database"],
     },
@@ -57,13 +63,13 @@ export default function Home() {
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Fermín Moreno</h1>
                   <p className="max-w-[600px] text-gray-700 md:text-xl dark:text-gray-300">
-                    Full Stack Developer with 4 years of experience delivering custom web solutions
+                    {t("hero.title")} {t("hero.subtitle")}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="#projects">
                     <Button className="px-4 py-2 bg-teal-600 hover:bg-teal-700">
-                      View Projects <ArrowRight className="ml-2 h-4 w-4" />
+                      {t("hero.viewProjects")} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                   <Link href="#contact">
@@ -71,7 +77,7 @@ export default function Home() {
                       variant="outline"
                       className="px-4 py-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
-                      Contact Me
+                      {t("hero.contactMe")}
                     </Button>
                   </Link>
                 </div>
@@ -90,20 +96,14 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
-                  About Me
+                  {t("about.title")}
                 </h2>
-                <p className="text-gray-700 md:text-xl dark:text-gray-300">
-                  Full Stack Developer with 4 years of experience delivering custom web solutions for various clients.
-                  Proficient in front-end and back-end web development, along with mobile app development for Android.
-                </p>
-                <p className="text-gray-700 md:text-xl dark:text-gray-300">
-                  Experienced in managing full project lifecycles, from concept to deployment, and optimizing business
-                  processes through custom software solutions.
-                </p>
+                <p className="text-gray-700 md:text-xl dark:text-gray-300">{t("about.p1")}</p>
+                <p className="text-gray-700 md:text-xl dark:text-gray-300">{t("about.p2")}</p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <div className="flex items-center text-teal-600 dark:text-teal-400">
-                    <span className="font-medium mr-2">Languages:</span>
-                    <span>English (Proficient), Spanish (Native)</span>
+                    <span className="font-medium mr-2">{t("about.languages")}</span>
+                    <span>{t("about.languagesList")}</span>
                   </div>
                 </div>
               </div>
@@ -128,10 +128,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
-                  Projects
+                  {t("projects.title")}
                 </h2>
                 <p className="max-w-[900px] text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-300">
-                  A collection of my recent work and ongoing projects.
+                  {t("projects.subtitle")}
                 </p>
               </div>
             </div>
@@ -139,6 +139,37 @@ export default function Home() {
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
+            </div>
+
+            {/* Entrepreneurship Card */}
+            <div className="mx-auto max-w-5xl pt-10">
+              <Card className="overflow-hidden transition-all hover:shadow-md border-teal-100 dark:border-teal-900">
+                <div className="grid md:grid-cols-2">
+                  <div className="relative aspect-video overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900 dark:to-pink-800 flex items-center justify-center">
+                      <Instagram className="h-16 w-16 text-pink-600 dark:text-pink-300" />
+                    </div>
+                  </div>
+                  <CardContent className="p-6 flex flex-col justify-center">
+                    <h3 className="text-xl font-bold text-teal-700 dark:text-teal-300">
+                      {t("projects.entrepreneurship.title")}
+                    </h3>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      {t("projects.entrepreneurship.description")}
+                    </p>
+                    <CardFooter className="px-0 pt-4">
+                      <Link
+                        href="https://www.instagram.com/yourinstagram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-800 hover:underline dark:text-teal-400 dark:hover:text-teal-300"
+                      >
+                        {t("projects.entrepreneurship.viewStore")} <ExternalLink className="ml-1 h-3 w-3" />
+                      </Link>
+                    </CardFooter>
+                  </CardContent>
+                </div>
+              </Card>
             </div>
           </div>
         </section>
@@ -150,10 +181,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
-                  Get in Touch
+                  {t("contact.title")}
                 </h2>
                 <p className="max-w-[900px] text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-300">
-                  Interested in working together? Reach out through any of these channels.
+                  {t("contact.subtitle")}
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -184,21 +215,13 @@ export default function Home() {
                     LinkedIn
                   </Button>
                 </Link>
-                <Link href="https://www.instagram.com/yourinstagram" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    className="gap-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-950/30"
-                  >
-                    <Instagram className="h-4 w-4" />
-                    Instagram
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
+      <LanguageSwitcher variant="full" />
     </div>
   )
 }

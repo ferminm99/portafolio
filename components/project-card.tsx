@@ -1,6 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
+import { useState } from "react"
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -19,16 +23,26 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const { t } = useLanguage()
+  const [imageError, setImageError] = useState(false)
+
   return (
     <Card className="overflow-hidden transition-all hover:shadow-md border-teal-100 dark:border-teal-900">
       <CardHeader className="p-0">
         <div className="relative aspect-video overflow-hidden">
-          <Image
-            src={project.image || "/placeholder.svg"}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform hover:scale-105"
-          />
+          {imageError ? (
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900 dark:to-teal-800 flex items-center justify-center">
+              <span className="text-teal-700 dark:text-teal-300 font-medium">{project.title}</span>
+            </div>
+          ) : (
+            <Image
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform hover:scale-105"
+              onError={() => setImageError(true)}
+            />
+          )}
         </div>
       </CardHeader>
       <CardContent className="p-4">
@@ -53,7 +67,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           rel="noopener noreferrer"
           className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-800 hover:underline dark:text-teal-400 dark:hover:text-teal-300"
         >
-          View Project <ExternalLink className="ml-1 h-3 w-3" />
+          {t("projects.viewProject")} <ExternalLink className="ml-1 h-3 w-3" />
         </Link>
       </CardFooter>
     </Card>

@@ -1,40 +1,43 @@
+"use client"
+
+import { useLanguage } from "@/contexts/language-context"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 export function SkillsSection() {
+  const { t } = useLanguage()
+
   const skillCategories = [
     {
-      title: "Client-Side",
+      title: t("skills.category1"),
       skills: ["HTML", "CSS", "JavaScript", "Vue.js", "React", "PHP", "Bootstrap", "UI/UX", "XML"],
     },
     {
-      title: "Server-Side",
+      title: t("skills.category2"),
       skills: ["Spring Boot", "Laravel", "Node", "Next", "MySQL", "PostgreSQL", "SQL", "JSON", "Python", "APIs"],
     },
     {
-      title: "Development & Operations",
+      title: t("skills.category3"),
       skills: ["GIT", "Scrum", "Agile", "Docker", "AWS s3", "Postman", "Maven"],
     },
     {
-      title: "Mobile Development",
+      title: t("skills.category4"),
       skills: ["Android Studio", "Kotlin"],
     },
   ]
 
   const strengths = [
     {
-      title: "Agile Methodologies",
-      description:
-        "Proficient in Scrum and Agile frameworks, improving project timelines by 50% and ensuring timely, cost-effective delivery.",
+      title: t("skills.strength1.title"),
+      description: t("skills.strength1.description"),
     },
     {
-      title: "Strategic Planning",
-      description:
-        'Led digital strategies, including marketing campaigns that increased sales and boosted brand visibility 15x for "El Mensual."',
+      title: t("skills.strength2.title"),
+      description: t("skills.strength2.description"),
     },
     {
-      title: "Problem Solving",
-      description: "Identified and resolved complex technical issues, reducing project downtime by 15%.",
+      title: t("skills.strength3.title"),
+      description: t("skills.strength3.description"),
     },
   ]
 
@@ -44,10 +47,10 @@ export function SkillsSection() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
-              Skills & Strengths
+              {t("skills.title")}
             </h2>
             <p className="max-w-[900px] text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-300">
-              Technical expertise and professional strengths.
+              {t("skills.subtitle")}
             </p>
           </div>
         </div>
@@ -76,7 +79,7 @@ export function SkillsSection() {
         </div>
 
         <div className="mt-12">
-          <h3 className="text-2xl font-bold mb-6 text-teal-600 dark:text-teal-400">Key Strengths</h3>
+          <h3 className="text-2xl font-bold mb-6 text-teal-600 dark:text-teal-400">{t("skills.strengths")}</h3>
           <div className="grid gap-6 md:grid-cols-3">
             {strengths.map((strength) => (
               <Card key={strength.title} className="border-teal-100 dark:border-teal-900">
