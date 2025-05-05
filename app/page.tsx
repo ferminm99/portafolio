@@ -1,21 +1,28 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Github, Linkedin, Mail, Instagram, ExternalLink } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
+import Link from "next/link";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  Instagram,
+  ExternalLink,
+} from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
-import { Button } from "@/components/ui/button"
-import { ProjectCard } from "@/components/project-card"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
-import { SkillsSection } from "@/components/skills-section"
-import { ExperienceSection } from "@/components/experience-section"
-import { EducationSection } from "@/components/education-section"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Button } from "@/components/ui/button";
+import { ProjectCard } from "@/components/project-card";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { SkillsSection } from "@/components/skills-section";
+import { ExperienceSection } from "@/components/experience-section";
+import { EducationSection } from "@/components/education-section";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function Home() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   const projects = [
     {
@@ -50,7 +57,7 @@ export default function Home() {
       link: "#",
       tags: ["Full Stack", "Business Solutions", "Database"],
     },
-  ]
+  ];
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -61,7 +68,9 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Fermín Moreno</h1>
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                    Fermín Moreno
+                  </h1>
                   <p className="max-w-[600px] text-gray-700 md:text-xl dark:text-gray-300">
                     {t("hero.title")} {t("hero.subtitle")}
                   </p>
@@ -69,7 +78,8 @@ export default function Home() {
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="#projects">
                     <Button className="px-4 py-2 bg-teal-600 hover:bg-teal-700">
-                      {t("hero.viewProjects")} <ArrowRight className="ml-2 h-4 w-4" />
+                      {t("hero.viewProjects")}{" "}
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                   <Link href="#contact">
@@ -91,18 +101,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
+        <section
+          id="about"
+          className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950"
+        >
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-teal-600 dark:text-teal-400">
                   {t("about.title")}
                 </h2>
-                <p className="text-gray-700 md:text-xl dark:text-gray-300">{t("about.p1")}</p>
-                <p className="text-gray-700 md:text-xl dark:text-gray-300">{t("about.p2")}</p>
+                <p className="text-gray-700 md:text-xl dark:text-gray-300">
+                  {t("about.p1")}
+                </p>
+                <p className="text-gray-700 md:text-xl dark:text-gray-300">
+                  {t("about.p2")}
+                </p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <div className="flex items-center text-teal-600 dark:text-teal-400">
-                    <span className="font-medium mr-2">{t("about.languages")}</span>
+                    <span className="font-medium mr-2">
+                      {t("about.languages")}
+                    </span>
                     <span>{t("about.languagesList")}</span>
                   </div>
                 </div>
@@ -159,12 +178,13 @@ export default function Home() {
                     </p>
                     <CardFooter className="px-0 pt-4">
                       <Link
-                        href="https://www.instagram.com/yourinstagram"
+                        href="https://www.instagram.com/ElMensual_LaPlata"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-800 hover:underline dark:text-teal-400 dark:hover:text-teal-300"
                       >
-                        {t("projects.entrepreneurship.viewStore")} <ExternalLink className="ml-1 h-3 w-3" />
+                        {t("projects.entrepreneurship.viewStore")}{" "}
+                        <ExternalLink className="ml-1 h-3 w-3" />
                       </Link>
                     </CardFooter>
                   </CardContent>
@@ -176,7 +196,10 @@ export default function Home() {
 
         <SkillsSection />
 
-        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
+        <section
+          id="contact"
+          className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950"
+        >
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -197,7 +220,11 @@ export default function Home() {
                     ferminmorenoz99@gmail.com
                   </Button>
                 </Link>
-                <Link href="https://github.com/ferminm99" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://github.com/ferminm99"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     variant="outline"
                     className="gap-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-950/30"
@@ -206,7 +233,11 @@ export default function Home() {
                     GitHub
                   </Button>
                 </Link>
-                <Link href="https://www.linkedin.com/in/fermin-moreno/" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://www.linkedin.com/in/fermin-moreno/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     variant="outline"
                     className="gap-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-950/30"
@@ -223,5 +254,5 @@ export default function Home() {
       <SiteFooter />
       <LanguageSwitcher variant="full" />
     </div>
-  )
+  );
 }
