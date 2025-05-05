@@ -291,8 +291,8 @@ export const translations = {
     es: "Resolución de Problemas",
   },
   "skills.strength3.description": {
-    en: "Identified and resolved complex technical issues, reducing project downtime by 15%.",
-    es: "Identifiqué y resolví problemas técnicos complejos, reduciendo el tiempo de inactividad del proyecto en un 15%.",
+    en: "Identified and resolved complex technical issues, reducing projects downtime by 15%.",
+    es: "Identifiqué y resolví problemas técnicos complejos, reduciendo el tiempo de inactividad en distintos proyectos en un 15%.",
   },
 
   // Contact Section

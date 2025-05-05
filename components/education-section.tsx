@@ -66,9 +66,9 @@ export function EducationSection() {
                     </span>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    {/* <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                       {t("education.gpa")}: {item.gpa}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </CardContent>
